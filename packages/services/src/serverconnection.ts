@@ -282,7 +282,9 @@ namespace Private {
     let authenticated = false;
     if (settings.token) {
       authenticated = true;
-      request.headers.append('Authorization', `token ${settings.token}`);
+      
+      // don't add the authorization header when using a custom one
+      //request.headers.append('Authorization', `token ${settings.token}`);
     }
     if (typeof document !== 'undefined' && document?.cookie) {
       const xsrfToken = getCookie('_xsrf');
